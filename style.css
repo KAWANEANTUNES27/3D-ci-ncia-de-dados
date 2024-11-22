@@ -1,10 +1,26 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    text-align: center;
-    background-color: #f4f4f4;
-}
-#chart-container {
-    width: 80%;
-    margin: auto;
-}
+// script.js
+// Carregar dados fictícios em formato JSON
+const data = [
+    { categoria: "Jovens", percentual: 35 },
+    { categoria: "Adultos", percentual: 50 },
+    { categoria: "Idosos", percentual: 15 }
+];
+
+// Criar gráfico de barras usando D3.js (exemplo básico)
+const width = 500;
+const height = 300;
+
+const svg = d3.select("#chart-container")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+svg.selectAll("rect")
+    .data(data)
+    .enter()
+    .append("rect")
+    .attr("x", (d, i) => i * 100)
+    .attr("y", d => height - d.percentual * 5)
+    .attr("width", 80)
+    .attr("height", d => d.percentual * 5)
+    .attr("fill", "steelblue");
