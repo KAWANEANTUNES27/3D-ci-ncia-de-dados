@@ -3,28 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redes Sociais</title>
+    <title>Relatório das redes sociais</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
 </head>
-<body>
+<body>   
     <header>
         <h1>Relatório das redes sociais</h1>
         <nav>
             <a href="index.html">Mundo</a>
-            <a href="#">Minha escola</a>
+            <a href="escola.html">Minha escola</a>
+            <a href="estatisticas.html">Estatísticas</a>
+            <a href="contato.html">Contato</a>
         </nav>
     </header>
     <main class="graficos-section">
         <section id="graficos-container" class="graficos-container">
-            <!-- crie os gráficos/texto aqui -->
+            <div id="grafico-usuarios"></div>
         </section>
     </main>
     <footer>
         <p>Desenvolvido por Gui Lima</p>
+        <p><a href="https://www.linkedin.com/in/guilherme-lima" target="_blank">LinkedIn</a> | <a href="mailto:gui@example.com">Email</a></p>
     </footer>
     <script type="module" src="graficos/common.js"></script>
     <script type="module" src="graficos/informacoesGlobais.js"></script>
     <script type="module" src="graficos/quantidadeUsuarios.js"></script>
+    <script>
+        const data = [{
+            x: ['Facebook', 'Twitter', 'Instagram', 'LinkedIn'],
+            y: [350, 200, 300, 100],
+            type: 'bar'
+        }];
+        
+        const layout = {
+            title: 'Número de usuários por rede social',
+            xaxis: { title: 'Rede Social' },
+            yaxis: { title: 'Número de usuários (em milhões)' }
+        };
+
+        Plotly.newPlot('grafico-usuarios', data, layout);
+    </script>
 </body>
 </html>
